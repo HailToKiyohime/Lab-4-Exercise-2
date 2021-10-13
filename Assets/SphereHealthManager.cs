@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PersistentManagerScript : MonoBehaviour
+public class SphereHealthManager : MonoBehaviour
 {
     public int Value;
     private Text _text;
 
-    public static PersistentManagerScript Instance {get; private set;}
+    public static SphereHealthManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -23,10 +23,10 @@ public class PersistentManagerScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void AddScore(int value)
+    public void damage(int value)
     {
-        Value += value;
-        _text.text = "Score: "+Value.ToString();
+        Value -= value;
+        _text.text = "Sphere Health: " + (10+Value).ToString();
     }
 
 }
